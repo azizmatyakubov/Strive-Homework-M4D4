@@ -1,4 +1,5 @@
 import React from "react";
+import CommentList from "./CommentList";
 
 class CommentArea extends React.Component {
   state = {
@@ -8,8 +9,7 @@ class CommentArea extends React.Component {
 
   componentDidMount = async () => {
     let response = await fetch(
-      "https://striveschool-api.herokuapp.com/api/comments/" +
-        this.props.asin,
+      "https://striveschool-api.herokuapp.com/api/comments/" + this.state.bookId,
       {
         headers: {
           Authorization:
@@ -18,11 +18,15 @@ class CommentArea extends React.Component {
       }
     );
 
-    let data = await response.json();
-    await console.log(data);
+    if (response.ok) {
+      let data = await response.json();
+      this.setState({ comments: data });
+      console.log(data);
+    }
   };
   render() {
-  return (<div>CommentArea</div>)
-}};
+    return <CommentList array={this.state.comments} />;
+  }
+};
 
 export default CommentArea;

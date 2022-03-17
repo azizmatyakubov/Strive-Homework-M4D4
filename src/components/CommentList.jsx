@@ -1,13 +1,15 @@
-// import React from 'react'
-// import { ListGroup } from 'react-bootstrap'
-// import CommentListItem from './CommentListItem'
+import React from "react";
+import { ListGroup } from "react-bootstrap";
+import CommentListItem from "./CommentListItem";
 
-// const CommentList = (props) => {
-//   return (
-//     <ListGroup>
+const CommentList = (props) => {
+  return (
+    <ListGroup>
+      {props.array.map((comment) => {
+        <CommentListItem comment={comment} />;
+      })}
+    </ListGroup>
+  );
+};
 
-//     </ListGroup>
-//   )
-// }
-
-// export default CommentList
+export default CommentList;

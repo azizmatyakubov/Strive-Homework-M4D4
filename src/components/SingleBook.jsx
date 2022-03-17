@@ -31,11 +31,11 @@ class SingleBook extends Component {
           <Card.Title>{this.props.title}</Card.Title>
           <Button variant="primary">{this.props.price}</Button>
         </Card.Body>
-        </Card>
+      </Card>
 
-        <CommentArea asin={this.props.book.asin} />
+      <CommentArea />
     </>
-  )};
+  );};
 };
 
 export default SingleBook;
