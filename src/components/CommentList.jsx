@@ -5,9 +5,9 @@ import CommentListItem from "./CommentListItem";
 const CommentList = (props) => {
   return (
     <ListGroup>
-      {props.array.map((comment) => {
-        <CommentListItem comment={comment} />;
-      })}
+      {props.array.map((comment) => (
+        <CommentListItem key={comment._id} comment={comment.comment} />
+      ))}
     </ListGroup>
   );
 };

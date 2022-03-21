@@ -1,14 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import BookList from "./components/BookList";
+import Main from "./components/Main";
 import WarningSign from "./components/WarningSign";
-import data from "./data/sciFi.json";
 
 function App() {
   return (
     <div>
       <WarningSign message="welcome to the book store" />
-      <BookList data={data} />
+      <Main />
     </div>
   );
 }

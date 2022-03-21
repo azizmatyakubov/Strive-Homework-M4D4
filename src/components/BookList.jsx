@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import SingleBook from "./SingleBook";
-import { Container, Row, Col, Form, FormControl } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  FormControl,
+  Card,
+  Button,
+} from "react-bootstrap";
 
 class BookList extends Component {
   state = {
     searchQuery: "",
   };
+
   render() {
     return (
       <Container>
@@ -34,12 +43,27 @@ class BookList extends Component {
             )
             .map((book, i) => (
               <Col>
-                <SingleBook
+                {/* <SingleBook
                   img={book.img}
                   title={book.title}
                   price={book.price}
-                  key={i}
-                />
+                  asin={book.asin}
+                  key={book.asin}
+                  showComment={this.props.getBookId}
+                /> */}
+                <Card
+                  onClick={(event) =>
+                    // this.props.showComment(event.target.value)
+                    console.log(event.target.asin)
+                  }
+                >
+                  <Card.Img variant="top" src={book.img} />
+
+                  <Card.Body>
+                    <Card.Title>{book.title}</Card.Title>
+                    <Button variant="primary">{book.price}</Button>
+                  </Card.Body>
+                </Card>
               </Col>
             ))}
         </Row>
