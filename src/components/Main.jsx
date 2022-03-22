@@ -1,30 +1,28 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Col, Row, Container } from "react-bootstrap";
 import BookList from "./BookList";
 import CommentArea from "./CommentArea";
 import data from "../data/sciFi.json";
 
-export default class Main extends Component {
-  state = {
-    bookAsin: null,
+const Main = (props) => {
+  const [bookAsin, setBookAsin] = useState("0199540241");
+
+  const changeBookId = (data) => {
+    setBookAsin(data);
   };
 
-  changeBookId = (data) => {
-    this.setState({ bookAsin: data });
-  };
+  return (
+    <Container>
+      <Row>
+        <Col md={6}>
+          <BookList data={data} showComment={changeBookId} />
+        </Col>
+        <Col md={6}>
+          <CommentArea id={bookAsin} />
+        </Col>
+      </Row>
+    </Container>
+  );
+};
 
-  render() {
-    return (
-      <Container>
-        <Row>
-          <Col md={6}>
-            <BookList data={data} showComment={this.changeBookId} />
-          </Col>
-          <Col md={6}>
-            <CommentArea id={this.state.bookAsin} />
-          </Col>
-        </Row>
-      </Container>
-    );
-  }
-}
+export default Main;
