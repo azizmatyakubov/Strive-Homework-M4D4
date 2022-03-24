@@ -1,14 +1,21 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import  MyNavbar  from "./components/MyNavbar";
 import "./App.css";
 import Main from "./components/Main";
-import WarningSign from "./components/WarningSign";
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import Register from "./components/Register";
 
 function App() {
   return (
-    <div>
-      <WarningSign message="welcome to the book store" />
-      <Main />
-    </div>
+    <BrowserRouter>
+    <MyNavbar />
+      <Routes>
+      
+      <Route path="/" element={<Main />} /> 
+      <Route path="/register" element={<Register />} /> 
+  
+      </Routes>
+    </BrowserRouter>
   );
 }
 
